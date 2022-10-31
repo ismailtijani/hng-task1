@@ -4,7 +4,7 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-app.get("/task1", (req, res) => {
+app.get("/", (req, res) => {
   const data = JSON.stringify({
     slackUsername: "Ismail Tijani",
     backend: true,
