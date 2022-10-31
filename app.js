@@ -5,6 +5,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+res.set("Content-Type", "application/json");
 
 const port = process.env.PORT || 3000;
 
