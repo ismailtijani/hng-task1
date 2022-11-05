@@ -84,7 +84,7 @@ app.post("/", (req, res) => {
   }
 
   res.status(200).json({
-    slackUserName: "SOT",
+    slackUserName: "Ismail Tijani",
     operation_type: convertedType,
     result,
   });
