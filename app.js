@@ -22,12 +22,12 @@ const port = process.env.PORT || 3000;
 // });
 
 const OperationType = Object.freeze({
-  ADD: "add",
-  SUBTRACT: "subtract",
-  MULTIPLY: "multiply",
-  PLUS: "plus",
-  MINUS: "minus",
-  TIMES: "times",
+  ADD: "addition",
+  SUBTRACT: "subtraction",
+  MULTIPLY: "multiplication",
+  //   PLUS: "plus",
+  //   MINUS: "minus",
+  //   TIMES: "times",
 });
 
 app.post("/", (req, res) => {
@@ -55,7 +55,7 @@ app.post("/", (req, res) => {
   }
 
   const extractOperationType = operation_type.match(
-    /add|subtract|multiply|plus|minus|times/i
+    /addition|subtraction|multiplication|plus|minus|times/i
   );
 
   const convertedType = extractOperationType[0].toLowerCase();
@@ -68,15 +68,15 @@ app.post("/", (req, res) => {
 
   switch (convertedType) {
     case OperationType.ADD:
-    case OperationType.PLUS:
+      // case OperationType.PLUS:
       result = x + y;
       break;
     case OperationType.SUBTRACT:
-    case OperationType.MINUS:
+      // case OperationType.MINUS:
       result = x - y;
       break;
     case OperationType.MULTIPLY:
-    case OperationType.TIMES:
+      // case OperationType.TIMES:
       result = x * y;
       break;
     default:
