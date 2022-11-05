@@ -41,32 +41,23 @@ app.post("/", (req, res) => {
 
   let result = 0;
 
-  // Bonus
   const extractDigits = operation_type.match(/\d+/g);
 
-  const xNew = parseInt(extractDigits[0]);
-  const yNew = parseInt(extractDigits[1]);
-
-  if (!x || !y) {
-    if (extractDigits) {
-      x = xNew;
-      y = yNew;
+  if (!x && !y) {
+    if (extractDigits.length === 2) {
+      x = parseInt(extractDigits[0]);
+      y = parseInt(extractDigits[1]);
     } else {
       return res.status(400).json({
-        error: "Missing variable",
+        error: "x and y are required",
       });
     }
-  }
-
-  if (!Number.isInteger(x) || !Number.isInteger(y)) {
-    return res.status(400).json({
-      error: "Varaiable is not an integer",
-    });
   }
 
   const extractOperationType = operation_type.match(
     /add|subtract|multiply|plus|minus|times/i
   );
+
   const convertedType = extractOperationType[0].toLowerCase();
 
   if (!Object.values(OperationType).includes(convertedType)) {
@@ -93,7 +84,7 @@ app.post("/", (req, res) => {
   }
 
   res.status(200).json({
-    slackUserName: "Ismail Tijani",
+    slackUserName: "SOT",
     operation_type: convertedType,
     result,
   });
