@@ -31,7 +31,7 @@ const OperationType = Object.freeze({
 });
 
 app.post("/", (req, res) => {
-  const { operation_type } = req.body;
+  var { x, y, operation_type } = req.body;
 
   if (!operation_type) {
     return res.status(400).json({
@@ -41,14 +41,26 @@ app.post("/", (req, res) => {
 
   let result = 0;
 
+  // Bonus
   const extractDigits = operation_type.match(/\d+/g);
 
-  const x = parseInt(extractDigits[0]);
-  const y = parseInt(extractDigits[1]);
+  const xNew = parseInt(extractDigits[0]);
+  const yNew = parseInt(extractDigits[1]);
 
   if (!x || !y) {
+    if (extractDigits) {
+      x = xNew;
+      y = yNew;
+    } else {
+      return res.status(400).json({
+        error: "Missing variable",
+      });
+    }
+  }
+
+  if (!Number.isInteger(x) || !Number.isInteger(y)) {
     return res.status(400).json({
-      error: "Missing required parameter",
+      error: "Varaiable is not an integer",
     });
   }
 
