@@ -9,17 +9,17 @@ app.use(express.urlencoded({ extended: true }));
 
 const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.set("Content-Type", "application/json");
-  const data = JSON.stringify({
-    slackUsername: "Ismail Tijani",
-    backend: true,
-    age: 28,
-    bio: "My name is Ismail Tijani, i am a software developer",
-  });
+// app.get("/", (req, res) => {
+//   res.set("Content-Type", "application/json");
+//   const data = JSON.stringify({
+//     slackUsername: "Ismail Tijani",
+//     backend: true,
+//     age: 28,
+//     bio: "My name is Ismail Tijani, i am a software developer",
+//   });
 
-  res.send(data);
-});
+//   res.send(data);
+// });
 
 const OperationType = Object.freeze({
   ADD: "add",
